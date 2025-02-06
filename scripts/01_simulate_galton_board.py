@@ -1,11 +1,18 @@
-# 1. Import necessary libraries
-# 2. Define a function `simulate_galton_board(rows, balls)`
-#    - Create an empty list to store bin counts
-#    - Iterate through each ball:
-#       - Simulate its movement row-by-row
-#       - Each row, randomly decide left (0) or right (1)
-#       - Track final bin position based on total right movements
-#       - Update the bin counts accordingly
-# 3. Save results as a CSV file in `outputs/galton_simulation_results.csv`
-# 4. Allow user to specify rows and balls via `config.json`
-# 5. If run as a script, execute `simulate_galton_board`
+import numpy as np
+import pandas as pd
+import json
+
+def simulate_galton_board(rows, balls):
+    bin_counts = np.zeros(rows + 1, dtype=int)
+
+    for _ in range(balls):
+        final_position = sum(np.random.choice([0, 1], size=rows))
+        bin_counts[final_position] += 1
+
+    df = pd.DataFrame({"Bin": np.arange(len(bin_counts)), "Count": bin_counts})
+    df.to_csv("outputs/galton_simulation_results.csv", index=False)
+
+if __name__ == "__main__":
+    with open("config.json") as f:
+        config = json.load(f)
+    simulate_galton_board(config["rows"], config["balls"])
