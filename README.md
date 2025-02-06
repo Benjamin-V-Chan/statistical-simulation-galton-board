@@ -53,7 +53,7 @@ project-root/
 │   ├── summary_statistics.csv
 │   ├── monte_carlo_results.json
 │   ├── galton_simulation_results.csv
-├── config.json                      # Stores simulation parameters
+├── config.json                       # Stores simulation parameters
 ├── requirements.txt                  # Required Python packages
 └── README.md                         # Project documentation
 ```
@@ -69,7 +69,7 @@ pip install -r requirements.txt
 ```
 
 ### **2. Run the Galton Board Simulation**
-This script simulates the Galton Board experiment with the specified number of rows and balls.
+Fill out the config.json. Then run this script that simulates the Galton Board experiment with the specified number of rows and balls.
 ```bash
 python scripts/01_simulate_galton_board.py
 ```
